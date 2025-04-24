@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { API_ENDPOINTS } from '../../constantes/endpoints';
+import { API_ENDPOINTS } from '../constantes/endpoints';
 
 @Injectable({
   providedIn: 'root',
