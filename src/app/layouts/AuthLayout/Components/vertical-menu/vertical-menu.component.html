@@ -1,11 +1,24 @@
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
 <nav class="menu-container">
-    <ul class="menu-list">
-      <li *ngFor="let item of menuItems">
-        <a [routerLink]="item.route" routerLinkActive="active-link">
-          <i [class]="item.icon"></i>
-          <span>{{ item.label }}</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
-  
+  <ul class="menu-list">
+
+    <li>
+      <a [routerLink]="'/app'" routerLinkActive="active-link">
+        <i class='bx bx-search'></i>
+        <span>Iniciar Busca</span>
+      </a>
+    </li>
+
+    <li>
+      <a [routerLink]="'/app/dashboard'" routerLinkActive="active-link">
+        <i class='bx bxs-dashboard'></i>
+        <span>Dashboard</span>
+      </a>
+    </li>
+
+  </ul>
+</nav>

@@ -4,6 +4,7 @@ import { HomeComponent } from './layouts/NonAuthLayout/Components/home/home.comp
 import { LoginComponent } from './layouts/NonAuthLayout/Components/login/login.component';
 import { AuthLayoutComponent } from './layouts/AuthLayout/auth-layout/auth-layout.component';
 import { HomeComponentAuth } from './layouts/AuthLayout/Components/home/home.component';
+import { DashboardComponent } from './layouts/AuthLayout/Components/dashboard/dashboard.component';
 
 export const routes: Routes = [
     {
@@ -18,7 +19,11 @@ export const routes: Routes = [
         path:'app',
         component: AuthLayoutComponent,
         children:[
-            {path: '', component: HomeComponentAuth}
+            {path: '', component: HomeComponentAuth},
+            { path: 'dashboard', component: DashboardComponent },
+            { path: '', component: HomeComponentAuth}
         ]
       }
+      
+
 ];

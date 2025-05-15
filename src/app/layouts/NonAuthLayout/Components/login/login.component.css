@@ -6,6 +6,7 @@
     background: #0d1117;
     padding: 2rem;
   }
+
   
   .login-card {
     background: #161b22;
@@ -16,6 +17,7 @@
     box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2);
     color: white;
     text-align: center;
+    
   }
   
   .login-card h2 {
@@ -46,26 +48,92 @@
   
   .login-card input:focus {
     outline: none;
-    border-color: #00c853;
+    border-color: #e01071;
   }
   
   .login-card button {
     padding: 0.75rem;
-    background: #00c853;
+    background: #e01071;
     color: white;
     font-weight: bold;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     transition: background 0.3s;
+    border: none;
+    outline: none;
+    color: #FFF;
+    position: relative;
+    z-index: 0;
+    border-radius: 12px;
+    margin-top: 1rem;
+  }
+
+  .login-card button::after {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #333;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+  }
+
+  .login-card button::before {
+    content: "";
+    background: linear-gradient(
+      45deg,
+    #4e0a2b, #e01071, #791143, #420422
+    );
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 600%;
+    z-index: -1;
+    width: calc(100% + 4px);
+    height:  calc(100% + 4px);
+    filter: blur(8px);
+    animation: glowing 20s linear infinite;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+    opacity: 0;
+  }
+
+  .login-card button::before {
+    opacity: 1;
   }
   
-  .login-card button:hover {
-    background: #00b44a;
+  .login-card button:after {
+    background: transparent;
   }
+  
+  .login-card button:active {
+    color: #000;
+    font-weight: bold;
+  }
+
   
   .login-card button:disabled {
-    background: #4caf5055;
+    background: #200310b4;
     cursor: not-allowed;
   }
   
+  @keyframes glowing {
+    0% {background-position: 0 0;}
+    50% {background-position: 400% 0;}
+    100% {background-position: 0 0;}
+  }
+
+
+
+
+  @keyframes spinRadar {
+    0% {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+  }

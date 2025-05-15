@@ -1,49 +1,52 @@
 .header {
-    background-color: #0d1117;
-    color: white;
-    padding: 1rem 0;
-    border-bottom: 1px solid #30363d;
-  
-    .container {
-      max-width: 1200px;
-      /* margin: 0 auto; */
-      padding: 0 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-  
-    .logo {
-      font-weight: 700;
-      font-size: 1.5rem;
-      white-space: nowrap;
-    }
-  
-    .nav {
-      display: flex;
-      gap: 2rem;
-  
-      a {
-        color: white;
-        text-decoration: none;
-        font-weight: 500;
-        position: relative;
-        padding-bottom: 4px;
-  
-        &:hover {
-          color: #00c853;
-        }
-  
-        &.active::after {
-          content: '';
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          height: 2px;
-          width: 100%;
-          background-color: #00c853;
-        }
-      }
-    }
-  }
-  
+  background-color: #200311;
+  color: white;
+  padding: 1rem 0;
+  border-bottom: 1px solid #30363d;
+}
+
+.header .container {
+  max-width: 1200px;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header .logo img {
+  transform: scale(3);
+  transform-origin: center;
+}
+
+.header .nav {
+  display: flex;
+  gap: 2rem;
+}
+
+.header .nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.3s ease; /* animação suave na cor */
+}
+
+.header .nav a:hover {
+  color: #e01071; /* Cor rosa mais forte ao passar o mouse */
+}
+
+.header .nav a.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: #c00e5e; /* Cor de destaque para a aba ativa */
+}
+
+
+.logoheader{
+  transform: scale(3);
+}

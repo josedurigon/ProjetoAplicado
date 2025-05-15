@@ -3,4 +3,29 @@
     flex-direction: row;
     height: 100vh;
   }
+
+  * {
+    font-family: 'Poppins', sans-serif;
+  }
   
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .content-container {
+    display: flex;
+    flex: 1;
+  }
+  
+  app-vertical-menu {
+    width: 250px; /* ajuste conforme o tamanho do menu */
+    background-color: #f1f1f1; /* exemplo de cor */
+    min-height: calc(100vh - 60px); /* ajuste se o header tiver outra altura */
+  }
+  
+  router-outlet {
+    flex: 1;
+    padding: 20px;
+  }
