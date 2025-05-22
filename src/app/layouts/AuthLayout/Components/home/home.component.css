@@ -1,49 +1,31 @@
-.search-container::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 500px;
-  height: 500px;
-  background: conic-gradient(
-    from 0deg,
-    rgba(224, 16, 113, 0.5) 0deg,
-    rgba(224, 16, 113, 0) 90deg
-  );
-  transform: translate(-50%, -50%) rotate(0deg);
-  animation: spinRadar 4s linear infinite;
-  border-radius: 50%;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.3;
-}
-
-.logo-apex {
-  width: 400px; /* Ajuste o tamanho da logo */
-  margin-bottom: -4rem;
-}
-
-
-
-.url-input {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  margin-bottom: 1rem;
+.resultado-container {
+  margin: 40px auto 60px auto;
+  padding: 24px;
+  background: rgba(32, 3, 17, 0.9);
   border: 1px solid #791143;
-  border-radius: 0.5rem;
-  background-color: #4e0a2b; /* Cor do fundo */
-  color: white;
-  font-size: 1rem;
-  transition: all 0.3s ease; /* Transição suave */
-  position: relative; /* Necessário para aplicar z-index */
-  z-index: 2; /* Garantir que o input fique acima do radar e da logo */
+  border-radius: 16px;
+  max-width: 90%;
+  width: 800px;
+  box-shadow: 0 0 12px rgba(224, 16, 113, 0.2);
 }
 
-.url-input::placeholder {
-  color: #8b949e;
+.resultado-titulo {
+  color: #fff;
+  font-size: 1.4rem;
+  margin-bottom: 16px;
+  font-weight: 500;
+  text-align: center;
 }
 
-
+.resultado-pre {
+  color: #00ffcc;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.95rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 500px;
+  overflow-y: auto;
+}
 
 
 button {
@@ -120,42 +102,3 @@ button {
   color: #000;
   font-weight: bold;
 }
-
-.search-container {
-  position: absolute;
-  top: 50%;
-  left: 55%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-  background-color: #200311;
-  border-radius: 1rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
-  width: 400px;
-  overflow: hidden;
-  z-index: 1;
-}
-
-/* Animação de rotação contínua */
-@keyframes spinRadar {
-  0% {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  100% {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
-}
-
-
-.logo-apex {
-  display: block;
-  margin: 0 auto;
-  width: 300px; /* Ajuste o tamanho da logo conforme necessário */
-  margin-bottom: -4rem;
-  z-index: 1; /* Logo acima do radar */
-}
-
-
