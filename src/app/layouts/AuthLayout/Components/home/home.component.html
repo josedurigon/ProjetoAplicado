@@ -27,7 +27,13 @@
     <button (click)="onSearch()" class="search-button">
       Iniciar busca <i class="bx bx-search"></i>     
     </button>
+    <div *ngIf="resultado" class="resultado-container">
+      <h3 style="color: white;">Resultado do Scan</h3>
+      <pre style="color: white;">{{ resultado }}</pre>
+    </div>
   </div>
+  
+
 
 </body>
 

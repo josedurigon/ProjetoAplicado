@@ -1,4 +1,4 @@
-export const API_BASE_URL = 'http://localhost:8080/api'; 
+export const API_BASE_URL = 'http://localhost:8086/api'; 
 
 export const API_ENDPOINTS = {
   AUTH: {
@@ -8,5 +8,8 @@ export const API_ENDPOINTS = {
   },
   USER: {
     
+    },
+    EXPLOIT:{
+      EXPLOIT: `${API_BASE_URL}/exploit/exploit`
     }
 };
