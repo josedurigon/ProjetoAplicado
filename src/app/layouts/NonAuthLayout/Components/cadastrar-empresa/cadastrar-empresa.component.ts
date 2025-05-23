@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-
+import { EmpresaService } from '../../../../service/empresa.service';
 
 @Component({
   selector: 'app-cadastrar-empresa',
@@ -18,13 +18,14 @@ export class CadastrarEmpresaComponent {
 
 
 
- constructor(private fb: FormBuilder, private router: Router) {
+ constructor(private fb: FormBuilder, private router: Router, private empresaService: EmpresaService) {
     this.form = this.fb.group({
       nome: ['', Validators.required],
       cnpj: ['', [Validators.required, Validators.minLength(14)]],
       endereco: ['', Validators.required],
       cidade: ['', Validators.required],
-      regiaoId: ['', Validators.required]
+      email: ['', Validators.required],
+      senha: ['', Validators.required]
     });
   }
 
@@ -32,9 +33,19 @@ export class CadastrarEmpresaComponent {
   onSubmit() {
     if (this.form.valid) {
       const body = this.form.value;
+      console.log(body)
+      this.empresaService.salvarEmpresa(body).subscribe({
+        next: (res) =>{
+          console.log(res)
+        },
+        error: (err)=>{
+          console.error(err)
+        }
+      })
       console.log('Empresa cadastrada:', body);
-      // Aqui você envia para o backend com algum service
-      // this.empresaService.cadastrarEmpresa(body).subscribe(...)
+   
+    }else{
+      console.log("form nao valido")
     }
   }
 

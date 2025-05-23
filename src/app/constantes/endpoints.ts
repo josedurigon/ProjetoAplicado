@@ -11,5 +11,8 @@ export const API_ENDPOINTS = {
     },
     EXPLOIT:{
       EXPLOIT: `${API_BASE_URL}/exploit/exploit`
+    },
+    EMPRESA: {
+      NOVA: `${API_BASE_URL}/empresa/criarEmpresa`
     }
 };

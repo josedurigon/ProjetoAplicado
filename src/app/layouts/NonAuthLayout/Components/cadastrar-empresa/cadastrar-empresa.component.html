@@ -4,7 +4,7 @@
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="nome">Nome da empresa</label>
-      <input id="nome" formControlName="nome" type="text" placeholder="Ex: JDM Tecnologias" />
+      <input id="nome" formControlName="nome" type="text" placeholder="" />
     </div>
 
     <div class="form-group">
@@ -23,16 +23,17 @@
     </div>
 
     <div class="form-group">
-      <label for="regiaoId">Região</label><br>
-      <select id="regiaoId" formControlName="regiaoId">
-        <option value="">Selecione a região</option>
-        <option value="1">Norte</option>
-        <option value="2">Sul</option>
-        <option value="3">Leste</option>
-        <option value="4">Oeste</option>
-      </select>
+    <label for="email">Email do responsável</label>
+    <input id="email" formControlName="email" type="email" placeholder="empresa@email.com" />
     </div>
 
-    <button type="submit" [disabled]="form.invalid">Cadastrar</button>
+    <div class="form-group">
+    <label for="senha">Senha</label>
+    <input id="senha" formControlName="senha" type="password" placeholder="********" />
+    </div>
+
+
+
+    <button type="submit" >Cadastrar</button>
   </form>
 </div>
