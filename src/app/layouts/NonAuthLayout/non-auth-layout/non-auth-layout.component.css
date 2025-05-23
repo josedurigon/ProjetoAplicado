@@ -1,0 +1,61 @@
+/* Reset e base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f5f7fa;
+  color: #2c3e50;
+}
+
+/* Layout principal */
+.layout-content {
+  min-height: calc(100vh - 160px); /* altura total - header (80px) - footer (80px) */
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header fixo opcional */
+app-header {
+  display: block;
+  height: 80px;
+  background-color: #1a1a1a;
+  color: white;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Footer institucional */
+app-footer {
+  display: block;
+  height: 80px;
+  background-color: #0d0d0d;
+  color: #ccc;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  border-top: 1px solid #222;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .layout-content {
+    padding: 1.5rem 1rem;
+  }
+
+  app-header, app-footer {
+    height: auto;
+    padding: 1rem;
+    flex-direction: column;
+    text-align: center;
+  }
+}

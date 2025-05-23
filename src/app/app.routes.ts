@@ -5,6 +5,7 @@ import { LoginComponent } from './layouts/NonAuthLayout/Components/login/login.c
 import { AuthLayoutComponent } from './layouts/AuthLayout/auth-layout/auth-layout.component';
 import { HomeComponentAuth } from './layouts/AuthLayout/Components/home/home.component';
 import { DashboardComponent } from './layouts/AuthLayout/Components/dashboard/dashboard.component';
+import { CadastrarEmpresaComponent } from './layouts/NonAuthLayout/Components/cadastrar-empresa/cadastrar-empresa.component';
 
 export const routes: Routes = [
     {
@@ -12,7 +13,8 @@ export const routes: Routes = [
         component: NonAuthLayoutComponent,
         children: [
           { path: '', component: HomeComponent },
-          { path: 'login', component: LoginComponent }
+          { path: 'login', component: LoginComponent },
+          {path: 'cadastrarEmpresa', component:CadastrarEmpresaComponent}
         ]
       },
       {
