@@ -16,7 +16,7 @@
 .hero {
   background: linear-gradient(to right, #38081f, #490b29);
   color: white;
-  padding: -20rem 2rem;
+  padding: -40rem 2rem;
   text-align: center;
   animation: fade-in 1s ease forwards;
 

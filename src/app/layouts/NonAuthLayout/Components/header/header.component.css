@@ -6,11 +6,11 @@
 }
 
 .header .container {
-  max-width: 1200px;
-  padding: 0 2rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end; /* tudo vai pro lado direito */
   align-items: center;
+  padding: 0 2rem;
+  max-width: 5000px;
 }
 
 .header .logo img {
@@ -21,6 +21,7 @@
 .header .nav {
   display: flex;
   gap: 2rem;
+  margin-left: auto;
 }
 
 .header .nav a {
