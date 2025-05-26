@@ -1,56 +1,106 @@
-.resultado-container {
-  margin: 40px auto 60px auto;
-  padding: 24px;
-  background: rgba(32, 3, 17, 0.9);
+.main-container {
+  display: flex;
+  align-items: center;
+  height: 90vh;
+  background-color: #ffffff00;
+  margin-inline: 500px;       /* 20px fora, nas laterais */
+}
+
+/* === SEARCH CONTAINER COM RADAR === */
+.search-container {
+  margin-inline: 100px;       /* 20px fora, nas laterais */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  background-color: #200311;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  width: 400px;
+  z-index: 1;
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0d1117;
+}
+
+/* Radar animado */
+.search-container::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 500px;
+  height: 500px;
+  background: conic-gradient(
+    from 0deg,
+    rgba(224, 16, 113, 0.5) 0deg,
+    rgba(224, 16, 113, 0) 90deg
+  );
+  transform: translate(-50%, -50%) rotate(0deg);
+  animation: spinRadar 4s linear infinite;
+  border-radius: 50%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+@keyframes spinRadar {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* Logo */
+.logo-apex {
+  display: block;
+  margin: 0 auto;
+  width: 300px;
+  margin-bottom: -4rem;
+  z-index: 1;
+}
+
+/* Input URL */
+.url-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-top: 4rem;
+  margin-bottom: 1.5rem;
   border: 1px solid #791143;
-  border-radius: 16px;
-  max-width: 90%;
-  width: 800px;
-  box-shadow: 0 0 12px rgba(224, 16, 113, 0.2);
-}
-
-.resultado-titulo {
-  color: #fff;
-  font-size: 1.4rem;
-  margin-bottom: 16px;
-  font-weight: 500;
-  text-align: center;
-}
-
-.resultado-pre {
-  color: #00ffcc;
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 0.95rem;
-  white-space: pre-wrap;
-  word-break: break-word;
-  max-height: 500px;
-  overflow-y: auto;
-}
-
-
-button {
-  padding: 12px 20px;
-  font-size: 16px;
-  background-color: #e01071;
-  border: none;
-  border-radius: 4px;
+  border-radius: 0.5rem;
+  background-color: #4e0a2b;
   color: white;
-  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
 }
 
+.url-input::placeholder {
+  color: #8b949e;
+}
 
-/* button */
+/* Botão Glow */
 .search-button {
-  margin: 20px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   padding: 15px 40px;
   border: none;
   outline: none;
-  color: #FFF;
+  color: #fff;
   cursor: pointer;
   position: relative;
   z-index: 0;
   border-radius: 12px;
 }
+
 .search-button::after {
   content: "";
   z-index: -1;
@@ -62,34 +112,24 @@ button {
   top: 0;
   border-radius: 10px;
 }
-/* glow */
+
 .search-button::before {
   content: "";
-  background: linear-gradient(
-    45deg,
-    #4e0a2b, #e01071, #791143, #420422
-  );
+  background: linear-gradient(45deg, #4e0a2b, #e01071, #791143, #420422);
   position: absolute;
   top: -2px;
   left: -2px;
   background-size: 600%;
   z-index: -1;
   width: calc(100% + 4px);
-  height:  calc(100% + 4px);
+  height: calc(100% + 4px);
   filter: blur(8px);
   animation: glowing 20s linear infinite;
-  transition: opacity .3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
   border-radius: 10px;
   opacity: 0;
 }
 
-@keyframes glowing {
-  0% {background-position: 0 0;}
-  50% {background-position: 400% 0;}
-  100% {background-position: 0 0;}
-}
-
-/* hover */
 .search-button:hover::before {
   opacity: 1;
 }
@@ -101,4 +141,40 @@ button {
 .search-button:active {
   color: #000;
   font-weight: bold;
+}
+
+/* === RESULTADO === */
+.resultado-container {
+  margin: 40px auto 60px auto;
+  padding: 24px;
+  background: rgba(32, 3, 17, 0.9);
+  border: 1px solid #517911;
+  border-radius: 16px;
+  max-width: 90%;
+  width: 800px;
+  box-shadow: 0 0 12px rgba(224, 16, 113, 0.2);
+  position: relative;
+  z-index: 2;
+}
+
+.resultado-titulo {
+  color: #fff;
+  font-size: 1.4rem;
+  margin-bottom: 16px;
+  font-weight: 500;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.resultado-pre {
+  color: #00ffcc;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.95rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 500px;
+  overflow-y: auto;
+  position: relative;
+  z-index: 2;
 }

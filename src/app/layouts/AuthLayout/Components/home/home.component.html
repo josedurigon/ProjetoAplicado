@@ -1,3 +1,4 @@
+<!-- Container principal -->
 <div class="main-container">
   <div class="search-container">
     <img src="logo teste.png" alt="Logo Apex" class="logo-apex" />
@@ -16,8 +17,9 @@
   </div>
 </div>
 
-<!-- Resultado fora do .search-container -->
+<!-- Resultado (visível se houver dados) -->
 <div *ngIf="resultado" class="resultado-container">
   <h3 class="resultado-titulo">Resultado do Scan</h3>
   <pre class="resultado-pre">{{ resultado }}</pre>
 </div>
+
