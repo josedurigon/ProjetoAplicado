@@ -1,0 +1,122 @@
+/* Centraliza o dashboard no meio da tela */
+.dashboard-container {
+  background-color: #38051e;
+  color: #ffffff;
+  padding: 2rem;
+  border-radius: 20px;
+  max-width: 1000px;
+  width: 90vw;
+  min-height: 80vh;
+  font-family: 'Segoe UI', sans-serif;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Seção do gráfico */
+.chart-section {
+  width: 100%;
+  background-color: #2a0218;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(224, 16, 113, 0.2);
+  margin-bottom: 2rem;
+}
+
+/* Container de cards */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+/* Card individual */
+.card {
+  flex: 1 1 300px;
+  background-color: #5c0830;
+  border-left: 5px solid #e01071;
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: transform 0.3s ease;
+  color: #ffffff;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h4 {
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+
+.card p {
+  margin: 0.3rem 0;
+  font-size: 0.95rem;
+  color: #ffffff;
+}
+
+/* Blocos de texto e listas */
+.top-subdomain,
+.top-vulns {
+  width: 100%;
+  background-color: #2a0218;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border-left: 5px solid #e01071;
+  margin-bottom: 2rem;
+  color: #ffffff;
+}
+
+.top-subdomain h3,
+.top-vulns h3 {
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.top-vulns ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.top-vulns li {
+  background-color: #5c0830;
+  padding: 0.6rem;
+  margin-bottom: 0.6rem;
+  border-radius: 6px;
+  color: #ffffff;
+}
+
+/* Botão de relatório */
+button.relatorio-btn {
+  margin-top: 2rem;
+  padding: 0.8rem 1.8rem;
+  background-color: #e01071;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button.relatorio-btn:hover {
+  background-color: #c20b61;
+}
+
+
+.chart-container {
+  width: 100%;
+  max-width: 800px;
+  height: 400px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
+}

@@ -1,7 +1,42 @@
-<div style="max-width: 700px; margin: auto;">
-  <canvas #barChartCanvas width="400" height="200"></canvas>
-</div>
+<div class="dashboard-container">
 
-<div style="text-align: center; margin-top: 20px;">
-  <button (click)="emitirRelatorio()">Baixar Relatório PDF</button>
+  <!-- CARDS SUPERIORES -->
+  <div class="cards">
+    <div class="card">
+      <h4>🔍 Subdomínio mais vulnerável</h4>
+      <p class="highlight">{{ topSubdominio }}</p>
+    </div>
+
+    <div class="card">
+      <h4>🔥 Top 5 Vulnerabilidades</h4>
+      <ul>
+        <li *ngFor="let item of topVulnerabilidades">
+          {{ item.nome }} ({{ item.quantidade }})
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- GRÁFICO -->
+  <div class="chart-container">
+    <canvas #barChartCanvas></canvas>
+  </div>
+
+  <!-- LISTAGEM DETALHADA -->
+  <div class="vuln-list">
+    <h3>📋 Vulnerabilidades Detectadas</h3>
+    <div *ngFor="let v of vulnerabilidades" class="vuln-card">
+      <h4>{{ v.nomeVulnerabilidade }} - {{ v.severidade }}</h4>
+      <p><strong>Descrição:</strong> {{ v.descricaoDetalhada }}</p>
+      <p><strong>Recomendação:</strong> {{ v.recomendacao }}</p>
+      <p><strong>Subdomínio Afetado:</strong> {{ v.pontosAfetados }}</p>
+      <p><strong>CVSS Score:</strong> {{ v.cvssVector }}</p>
+    </div>
+  </div>
+
+  <!-- BOTÃO PDF -->
+  <div class="relatorio-btn">
+    <button (click)="emitirRelatorio()">📥 Baixar Relatório PDF</button>
+  </div>
+
 </div>

@@ -1,3 +1,8 @@
+* {
+  font-family: 'Rajdhani', sans-serif;
+}
+
+
 @keyframes fade-in {
   from {
     opacity: 0;

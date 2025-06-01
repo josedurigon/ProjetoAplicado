@@ -1,13 +1,23 @@
 import { Component, OnInit, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Chart, registerables } from 'chart.js';
+import { CommonModule } from '@angular/common';
 
 Chart.register(...registerables);
+
+interface Vulnerabilidade {
+  nomeVulnerabilidade: string;
+  severidade: string;
+  descricaoDetalhada: string;
+  recomendacao: string;
+  pontosAfetados: string;
+  cvssVector: string;
+}
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
@@ -16,22 +26,41 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   @ViewChild('barChartCanvas') chartRef!: ElementRef;
   chart!: Chart;
 
+  topSubdominio = '';
+  topVulnerabilidades: { nome: string; quantidade: number }[] = [];
+  vulnerabilidades: Vulnerabilidade[] = [];
+
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {}
 
   ngAfterViewInit(): void {
-    this.http.get<any[]>('http://localhost:8086/api/dashboard/dashboard')
+    this.http.get<Vulnerabilidade[]>('http://localhost:8086/api/dashboard/dashboard')
       .subscribe(data => {
-        const contagem: { [key: string]: number } = {};
+        this.vulnerabilidades = data;
 
-        data.forEach(vuln => {
-          const sev = vuln.severidade || 'Desconhecida';
-          contagem[sev] = (contagem[sev] || 0) + 1;
+        const severidadeCount: { [key: string]: number } = {};
+        const subdominioCount: { [key: string]: number } = {};
+        const vulnerabilidadeCount: { [key: string]: number } = {};
+
+        data.forEach(entry => {
+          const { severidade, pontosAfetados, nomeVulnerabilidade } = entry;
+
+          severidadeCount[severidade] = (severidadeCount[severidade] || 0) + 1;
+          subdominioCount[pontosAfetados] = (subdominioCount[pontosAfetados] || 0) + 1;
+          vulnerabilidadeCount[nomeVulnerabilidade] = (vulnerabilidadeCount[nomeVulnerabilidade] || 0) + 1;
         });
 
-        const labels = Object.keys(contagem);
-        const values = Object.values(contagem);
+        this.topSubdominio = Object.entries(subdominioCount)
+          .sort((a, b) => b[1] - a[1])[0][0];
+
+        this.topVulnerabilidades = Object.entries(vulnerabilidadeCount)
+          .sort((a, b) => b[1] - a[1])
+          .slice(0, 5)
+          .map(([nome, quantidade]) => ({ nome, quantidade }));
+
+        const labels = Object.keys(severidadeCount);
+        const values = Object.values(severidadeCount);
 
         this.chart = new Chart(this.chartRef.nativeElement, {
           type: 'bar',
@@ -45,14 +74,50 @@ export class DashboardComponent implements OnInit, AfterViewInit {
           },
           options: {
             responsive: true,
+            maintainAspectRatio: false,
             plugins: {
-              legend: { position: 'top' },
-              title: { display: true, text: 'Vulnerabilidades por Severidade' }
+              legend: {
+                position: 'top',
+                labels: {
+                  color: '#000'
+                }
+              },
+              title: {
+                display: true,
+                text: 'Distribuição por Severidade',
+                color: '#000'
+              }
+            },
+            scales: {
+              x: {
+                ticks: {
+                  color: '#000'
+                },
+                grid: {
+                  color: '#ccc'
+                }
+              },
+              y: {
+                ticks: {
+                  color: '#000'
+                },
+                grid: {
+                  color: '#ccc'
+                }
+              }
             }
-          }
+          },
+          plugins: [{
+            id: 'whiteBackground',
+            beforeDraw: (chart: any) => {
+              const ctx = chart.canvas.getContext('2d');
+              ctx.save();
+              ctx.fillStyle = 'white';
+              ctx.fillRect(0, 0, chart.width, chart.height);
+              ctx.restore();
+            }
+          }]
         });
-      }, error => {
-        console.error('Erro ao buscar dados do dashboard:', error);
       });
   }
 
@@ -65,8 +130,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       document.body.appendChild(a);
       a.click();
       a.remove();
-    }, err => {
-      console.error('Erro ao baixar relatório', err);
     });
   }
 
