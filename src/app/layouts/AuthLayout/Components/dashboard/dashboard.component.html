@@ -1,2 +1,7 @@
-<p>dashboard works!</p>
-<button (click)="emitirRelatorio()">Emitir relatório</button>
+<div style="max-width: 700px; margin: auto;">
+  <canvas #barChartCanvas width="400" height="200"></canvas>
+</div>
+
+<div style="text-align: center; margin-top: 20px;">
+  <button (click)="emitirRelatorio()">Baixar Relatório PDF</button>
+</div>
