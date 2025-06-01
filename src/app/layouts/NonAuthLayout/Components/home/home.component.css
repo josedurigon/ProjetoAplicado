@@ -13,13 +13,14 @@
   animation: fade-in 1s ease forwards;
 }
 
+
 .hero {
-  background: linear-gradient(to right, #38081f, #490b29);
+  background: linear-gradient(to right, #000000, #000000);
   color: white;
   padding: -20rem 2rem;
   text-align: center;
   animation: fade-in 1s ease forwards;
-
+  
   .title,
   .subtitle,
   .btn-primary {
@@ -80,6 +81,7 @@
     opacity: 0;
     animation: fade-in 1s ease forwards;
     animation-delay: 1s;
+ 
 
     h3 {
       color: #e01071;

@@ -1,17 +1,20 @@
 .main-header {
-  width: 100%;
+  width: 85vw;
   height: 72px;
-  background-color: #1a1a1a;
+  background-color: #38081f;
   color: #fff;
   display: flex;
   align-items: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid #2d2d2d;
+  box-shadow: 0 2px 6px #38081f;
+  border-bottom: 1px solid #38081f;
 }
 
+
+
 .header-container {
-  width: 100%;
-  max-width: 1280px;
+  width: 100vw;
+  /*max-width: 1280px; */
+  
   margin: 0 auto;
   padding: 0 2rem;
   display: flex;
@@ -41,17 +44,16 @@
 }
 
 .nav a:hover {
-  color: #8cb0d3;
+  color: #e01071;
 }
 
 .nav a.active::after {
   content: '';
   position: absolute;
-  bottom: -6px;
   left: 0;
   height: 2px;
   width: 100%;
-  background-color: #5c88c4;
+  background-color: #e01071;
 }
 
 /* Responsivo */
