@@ -1,2 +1,35 @@
-<p>dashboard works!</p>
-<button (click)="emitirRelatorio()">Emitir relatório</button>
+<div class="dashboard-grid">
+  <mat-card class="card">
+    <h3>Total Vulnerabilidades</h3>
+    <p class="total">{{ totalVulnerabilidades }}</p>
+  </mat-card>
+
+  <mat-card class="card" *ngFor="let crit of criticidades">
+    <h4>{{ crit | titlecase }}</h4>
+    <p class="sub">{{ vulnerabilidadesPorCriticidade[crit] }}</p>
+  </mat-card>
+
+  <mat-card class="card wide">
+    <canvas baseChart [data]="chartBarras.data" [type]="chartBarras.type" [options]="chartBarras.options"></canvas>
+  </mat-card>
+
+  <mat-card class="card">
+    <canvas baseChart [data]="chartPizza.data" [type]="chartPizza.type" [options]="chartPizza.options"></canvas>
+  </mat-card>
+
+  <mat-card class="card">
+    <h4>Subdomínio com mais vulnerabilidades</h4>
+    <p class="sub">{{ subdominioComMais }}</p>
+  </mat-card>
+
+  <mat-card class="card">
+    <h4>Progresso da análise</h4>
+    <mat-progress-bar mode="determinate" value="50"></mat-progress-bar>
+  </mat-card>
+</div>
+
+<div style="margin-top: 2rem; text-align: center;">
+  <button mat-raised-button color="primary" (click)="emitirRelatorio()">
+    Emitir Relatório
+  </button>
+</div>

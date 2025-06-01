@@ -8,24 +8,21 @@ import { DashboardComponent } from './layouts/AuthLayout/Components/dashboard/da
 import { CadastrarEmpresaComponent } from './layouts/NonAuthLayout/Components/cadastrar-empresa/cadastrar-empresa.component';
 
 export const routes: Routes = [
-    {
-        path: '',
-        component: NonAuthLayoutComponent,
-        children: [
-          { path: '', component: HomeComponent },
-          { path: 'login', component: LoginComponent },
-          {path: 'cadastrarEmpresa', component:CadastrarEmpresaComponent}
-        ]
-      },
-      {
-        path:'app',
-        component: AuthLayoutComponent,
-        children:[
-            {path: '', component: HomeComponentAuth},
-            { path: 'dashboard', component: DashboardComponent },
-            { path: '', component: HomeComponentAuth}
-        ]
-      }
-      
-
+  {
+    path: '',
+    component: NonAuthLayoutComponent,
+    children: [
+      { path: '', component: HomeComponent },
+      { path: 'login', component: LoginComponent },
+      { path: 'cadastrarEmpresa', component: CadastrarEmpresaComponent }
+    ]
+  },
+  {
+    path: 'app',
+    component: AuthLayoutComponent,
+    children: [
+      { path: '', component: HomeComponentAuth },
+      { path: 'dashboard', component: DashboardComponent }
+    ]
+  }
 ];
