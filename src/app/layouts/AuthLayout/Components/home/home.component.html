@@ -16,8 +16,13 @@
   </div>
 </div>
 
-<!-- Resultado fora do .search-container -->
+<!-- Resultado bruto -->
 <div *ngIf="resultado" class="resultado-container">
   <h3 class="resultado-titulo">Resultado do Scan</h3>
   <pre class="resultado-pre">{{ resultado }}</pre>
+</div>
+
+<!-- Dashboard renderizado após busca -->
+<div *ngIf="mostrarDashboard">
+  <app-dashboard></app-dashboard>
 </div>
