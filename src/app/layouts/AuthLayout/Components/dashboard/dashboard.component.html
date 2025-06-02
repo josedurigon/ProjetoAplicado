@@ -1,37 +1,47 @@
-<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
-
 <div class="dashboard-grid">
-  <mat-card class="card">
+
+  <!-- Linha superior com totais -->
+  <mat-card class="card tall">
     <h3>Total Vulnerabilidades</h3>
     <p class="total">{{ totalVulnerabilidades }}</p>
   </mat-card>
 
-  <mat-card class="card" *ngFor="let crit of criticidades">
+  <mat-card class="card tall">
+    <h3>Subdomínio com mais Críticas</h3>
+    <p class="sub">{{ subdominioComMaisCriticas }}</p>
+  </mat-card>
+
+  <mat-card class="card tall">
+    <h3>Subdomínio com mais Vulnerabilidades</h3>
+    <p class="sub">{{ subdominioComMais }}</p>
+  </mat-card>
+
+  <!-- Severidades individuais -->
+  <mat-card class="card small" *ngFor="let crit of criticidades">
     <h4>{{ crit | titlecase }}</h4>
     <p class="sub">{{ vulnerabilidadesPorCriticidade[crit] }}</p>
   </mat-card>
 
+  <!-- Gráficos -->
   <mat-card class="card wide">
+    <h4>Distribuição por Subdomínio</h4>
     <canvas baseChart [data]="chartBarras.data" [type]="chartBarras.type" [options]="chartBarras.options"></canvas>
   </mat-card>
 
   <mat-card class="card">
+    <h4>Proporção Geral</h4>
     <canvas baseChart [data]="chartPizza.data" [type]="chartPizza.type" [options]="chartPizza.options"></canvas>
   </mat-card>
 
-  <mat-card class="card">
-    <h4>Subdomínio com mais vulnerabilidades</h4>
-    <p class="sub">{{ subdominioComMais }}</p>
+  <mat-card class="card wide">
+    <h4>Distribuição por Severidade</h4>
+    <canvas baseChart [data]="chartRadar.data" [type]="chartRadar.type" [options]="chartRadar.options"></canvas>
   </mat-card>
 
-  <mat-card class="card">
-    <h4>Progresso da análise</h4>
-    <mat-progress-bar mode="determinate" value="50"></mat-progress-bar>
-  </mat-card>
-</div>
 
-<div style="margin-top: 2rem; text-align: center;">
-  <button class="search-button" (click)="emitirRelatorio()">
-    Emitir Relatório
-  </button>
+
+  <!-- Ação -->
+  <div class="dashboard-actions">
+    <button class="search-button" (click)="emitirRelatorio()">Emitir Relatório</button>
+  </div>
 </div>

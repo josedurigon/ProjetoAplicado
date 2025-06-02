@@ -21,6 +21,7 @@ import { ChartConfiguration } from 'chart.js';
 export class DashboardComponent implements OnInit {
   totalVulnerabilidades = 0;
   subdominioComMais = '';
+  subdominioComMaisCriticas = '';
 
   readonly criticidades: Array<'critica' | 'alta' | 'media' | 'baixa' | 'desconhecida'> = ['critica', 'alta', 'media', 'baixa', 'desconhecida'];
 
@@ -55,6 +56,23 @@ export class DashboardComponent implements OnInit {
     options: { responsive: true }
   };
 
+  chartRadar: ChartConfiguration<'radar'> = {
+    type: 'radar',
+    data: {
+      labels: ['Crítica', 'Alta', 'Média', 'Baixa', 'Desconhecida'],
+      datasets: [
+        {
+          label: 'Distribuição de Severidade',
+          data: [0, 0, 0, 0, 0],
+          backgroundColor: 'rgba(30, 136, 229, 0.2)',
+          borderColor: 'rgba(30, 136, 229, 1)',
+          pointBackgroundColor: 'rgba(30, 136, 229, 1)'
+        }
+      ]
+    },
+    options: { responsive: true }
+  };
+
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
@@ -65,6 +83,9 @@ export class DashboardComponent implements OnInit {
     this.http.get<any>('http://localhost:8086/api/dashboard/dashboard').subscribe(data => {
       this.totalVulnerabilidades = data.totalVulnerabilidades;
       this.subdominioComMais = data.subdominioComMais;
+
+      const criticidadesPadrao = ['critica', 'alta', 'media', 'baixa', 'desconhecida'];
+
       this.vulnerabilidadesPorCriticidade = {
         critica: data.vulnerabilidadesPorCriticidade['critica'] || 0,
         alta: data.vulnerabilidadesPorCriticidade['alta'] || 0,
@@ -73,18 +94,33 @@ export class DashboardComponent implements OnInit {
         desconhecida: data.vulnerabilidadesPorCriticidade['desconhecida'] || 0
       };
 
-      const severidadesEsperadas = ['critica', 'alta', 'media', 'baixa', 'desconhecida'];
-      const cores = ['#e53935', '#fb8c00', '#fdd835', '#43a047', '#9e9e9e'];
+      // Pizza
+      this.chartPizza.data.datasets[0].data = criticidadesPadrao.map(sev => data.vulnerabilidadesPorCriticidade[sev] || 0);
 
-      this.chartPizza.data.datasets[0].data = severidadesEsperadas.map(sev => data.vulnerabilidadesPorCriticidade[sev] || 0);
+      // Radar
+      this.chartRadar.data.datasets[0].data = criticidadesPadrao.map(sev => data.vulnerabilidadesPorCriticidade[sev] || 0);
 
+      // Barras
       this.chartBarras.data.labels = Object.keys(data.vulnerabilidadesPorSubdominio);
 
-      this.chartBarras.data.datasets = severidadesEsperadas.map((nivel, i) => ({
+      const cores = ['#e53935', '#fb8c00', '#fdd835', '#43a047', '#9e9e9e'];
+      this.chartBarras.data.datasets = criticidadesPadrao.map((nivel, i) => ({
         label: nivel.charAt(0).toUpperCase() + nivel.slice(1),
         data: Object.values(data.vulnerabilidadesPorSubdominio).map((sd: any) => sd[nivel] || 0),
         backgroundColor: cores[i]
       }));
+
+      // Subdomínio com mais críticas
+      let maior = 0;
+      let subCritico = '';
+      for (let sub in data.vulnerabilidadesPorSubdominio) {
+        const criticas = data.vulnerabilidadesPorSubdominio[sub]['critica'] || 0;
+        if (criticas > maior) {
+          maior = criticas;
+          subCritico = sub;
+        }
+      }
+      this.subdominioComMaisCriticas = subCritico;
     });
   }
 
