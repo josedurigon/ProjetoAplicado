@@ -1,42 +1,35 @@
-<div class="dashboard-container">
+<div class="dashboard-grid">
+  <mat-card class="card">
+    <h3>Total Vulnerabilidades</h3>
+    <p class="total">{{ totalVulnerabilidades }}</p>
+  </mat-card>
 
-  <!-- CARDS SUPERIORES -->
-  <div class="cards">
-    <div class="card">
-      <h4>🔍 Subdomínio mais vulnerável</h4>
-      <p class="highlight">{{ topSubdominio }}</p>
-    </div>
+  <mat-card class="card" *ngFor="let crit of criticidades">
+    <h4>{{ crit | titlecase }}</h4>
+    <p class="sub">{{ vulnerabilidadesPorCriticidade[crit] }}</p>
+  </mat-card>
 
-    <div class="card">
-      <h4>🔥 Top 5 Vulnerabilidades</h4>
-      <ul>
-        <li *ngFor="let item of topVulnerabilidades">
-          {{ item.nome }} ({{ item.quantidade }})
-        </li>
-      </ul>
-    </div>
-  </div>
+  <mat-card class="card wide">
+    <canvas baseChart [data]="chartBarras.data" [type]="chartBarras.type" [options]="chartBarras.options"></canvas>
+  </mat-card>
 
-  <!-- GRÁFICO -->
-  <div class="chart-container">
-    <canvas #barChartCanvas></canvas>
-  </div>
+  <mat-card class="card">
+    <canvas baseChart [data]="chartPizza.data" [type]="chartPizza.type" [options]="chartPizza.options"></canvas>
+  </mat-card>
 
-  <!-- LISTAGEM DETALHADA -->
-  <div class="vuln-list">
-    <h3>📋 Vulnerabilidades Detectadas</h3>
-    <div *ngFor="let v of vulnerabilidades" class="vuln-card">
-      <h4>{{ v.nomeVulnerabilidade }} - {{ v.severidade }}</h4>
-      <p><strong>Descrição:</strong> {{ v.descricaoDetalhada }}</p>
-      <p><strong>Recomendação:</strong> {{ v.recomendacao }}</p>
-      <p><strong>Subdomínio Afetado:</strong> {{ v.pontosAfetados }}</p>
-      <p><strong>CVSS Score:</strong> {{ v.cvssVector }}</p>
-    </div>
-  </div>
+  <mat-card class="card">
+    <h4>Subdomínio com mais vulnerabilidades</h4>
+    <p class="sub">{{ subdominioComMais }}</p>
+  </mat-card>
 
-  <!-- BOTÃO PDF -->
-  <div class="relatorio-btn">
-    <button (click)="emitirRelatorio()">📥 Baixar Relatório PDF</button>
-  </div>
+  <mat-card class="card">
+    <h4>Progresso da análise</h4>
+    <mat-progress-bar mode="determinate" value="50"></mat-progress-bar>
+  </mat-card>
+</div>
 
+<div style="margin-top: 2rem; text-align: center;">
+  <button mat-raised-button color="primary" (click)="emitirRelatorio()">
+    Emitir Relatório
+  </button>
 </div>

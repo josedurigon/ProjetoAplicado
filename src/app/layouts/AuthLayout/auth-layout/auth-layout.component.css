@@ -1,3 +1,9 @@
+* {
+  font-family: 'Rajdhani', sans-serif;
+}
+
+
+
 .main-container {
     display: flex;
     flex-direction: row;

@@ -8,7 +8,7 @@
 body, html {
   height: 100%;
   font-family: 'Poppins', sans-serif;
-  background-color: #000000;
+  background-color: #200311;
   color: #2c3e50;
 }
 
@@ -24,7 +24,7 @@ body, html {
 app-header {
   display: block;
   height: 80px;
-  background-color: #38081f;
+  background-color: #200311;
   color: white;
   padding: 0 2rem;
   display: flex;
@@ -36,7 +36,7 @@ app-header {
 app-footer {
   display: block;
   height: 80px;
-  background-color: #0d0d0d;
+  background-color: #200311;
   color: #ccc;
   text-align: center;
   display: flex;
