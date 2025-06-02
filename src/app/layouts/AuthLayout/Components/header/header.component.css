@@ -1,3 +1,7 @@
+* {
+  font-family: 'Rajdhani', sans-serif;
+}
+
 .header {
   background-color: #200311;
   color: white;
@@ -5,11 +9,12 @@
 }
 
 .header .container {
-  max-width: 1200px;
-  padding: 0 2rem;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem; /* Espaço nas laterais */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .header .logo img {
@@ -44,3 +49,16 @@
   width: 100%;
   background-color: #c00e5e; /* Cor de destaque para a aba ativa */
 }
+
+.logout-button {
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.logout-button:hover {
+  color: #e01071;
+}
+

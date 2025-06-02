@@ -2,16 +2,13 @@
   font-family: 'Rajdhani', sans-serif;
 }
 
-
-
-
 /* Menu Container */
 .menu-container {
   width: 70px;
-  height: 90vh;
+  height: 140vh;
   background-color: #440724;
   padding: 1rem 0.5rem;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  box-shadow: none !important;
   border-radius: 0 1rem 1rem 0;
   overflow: hidden;
   transition: width 0.4s ease; 
@@ -33,27 +30,27 @@
   margin-bottom: 1rem;
 }
 
-/* Estilo dos links dentro do menu */
+/* Links */
 .menu-list a {
   display: flex;
   align-items: center;
-  justify-content: center; /* Garante que o texto fique centralizado */
-  color: #cbd5e0;
+  justify-content: center;
   text-decoration: none;
   font-weight: 500;
-  padding: 0.75rem 1.5rem; /* Ajuste para garantir que o texto fique dentro do botão */
-  border-radius: 1rem; /* Mais arredondado para o botão */
+  padding: 0.75rem 1.5rem;
+  border-radius: 1rem;
   position: relative;
-  z-index: 1; /* Garantir que o texto fique acima do efeito */
-  transition: 
+  z-index: 1;
+  transition:
     background-color 0.4s ease,
     color 0.4s ease,
     padding 0.4s ease,
     margin 0.4s ease;
-  white-space: nowrap; /* Não deixa o texto quebrar */
+  white-space: nowrap;
+  color: #cbd5e0;
 }
 
-/* Efeito de botão como o .btn */
+/* Efeito botão */
 .menu-list a::after {
   content: "";
   z-index: -1;
@@ -69,15 +66,12 @@
 /* Glow */
 .menu-list a::before {
   content: "";
-  background: linear-gradient(
-    45deg,
-    #4e0a2b, #e01071, #791143, #420422
-  );
+  background: linear-gradient(45deg, #4e0a2b, #e01071, #791143, #420422);
   position: absolute;
   top: -2px;
   left: -2px;
   background-size: 600%;
-  z-index: -1; /* Coloca o efeito atrás do botão */
+  z-index: -1;
   width: calc(100% + 4px);
   height: calc(100% + 4px);
   filter: blur(8px);
@@ -88,12 +82,12 @@
 }
 
 @keyframes glowing {
-  0% {background-position: 0 0;}
-  50% {background-position: 400% 0;}
-  100% {background-position: 0 0;}
+  0% { background-position: 0 0; }
+  50% { background-position: 400% 0; }
+  100% { background-position: 0 0; }
 }
 
-/* Hover */
+/* Hover e ativo */
 .menu-list a:hover::before {
   opacity: 1;
 }
@@ -103,30 +97,36 @@
 }
 
 .menu-list a:active {
-  color: #000;
   font-weight: bold;
 }
 
-/* Hover com rosa vibrante */
 .menu-list a:hover,
-.active-link {
-  background-color: #e01071; /* Hover com rosa vibrante */
+.menu-list a.active-link {
+  background-color: #e01071;
+}
+
+/* Estilização controlada dos filhos (ícone e texto) */
+.menu-list a:hover i,
+.menu-list a.active-link i,
+.menu-list a:hover span,
+.menu-list a.active-link span {
   color: #ffffff;
 }
 
-/* Icones dentro dos links */
+/* Ícones */
 .menu-list i {
   font-size: 1.5rem;
   margin-right: 0.75rem;
-  transition: margin 0.4s ease;
+  color: #cbd5e0;
+  transition: color 0.3s ease, margin 0.4s ease;
 }
 
-/* Esconde o texto (span) quando menu está fechado */
+/* Esconde texto quando fechado */
 .menu-container:not(:hover) .menu-list span {
   display: none;
 }
 
-/* Opcional: centraliza melhor os ícones no menu fechado */
+/* Centraliza ícone quando fechado */
 .menu-container:not(:hover) .menu-list a {
   justify-content: center;
 }

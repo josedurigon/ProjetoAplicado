@@ -15,19 +15,27 @@ export class HomeComponentAuth {
   url: string = '';
   resultado: any;
   mostrarDashboard = false;
+  isLoading = false;
+  errorMessage = '';
 
   constructor(private exploitService: ExploitService) {}
 
   onSearch() {
+    this.isLoading = true;
+    this.errorMessage = '';
     const body = { alvo: this.url };
 
     this.exploitService.exploitHost(body).subscribe({
       next: (res) => {
         this.resultado = res;
-        this.mostrarDashboard = true; // Ativa o dashboard
-        console.log('Resultado do exploit:', res);
+        setTimeout(() => {
+          this.isLoading = false;
+          this.mostrarDashboard = true;
+        }, 1000); // Delay suave para UX
       },
       error: (err) => {
+        this.isLoading = false;
+        this.errorMessage = 'Erro ao executar exploit. Verifique a URL.';
         console.error('Erro ao executar exploit:', err);
       }
     });

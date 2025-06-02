@@ -1,14 +1,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+<!-- Tela de loading -->
+<div *ngIf="isLoading" class="loading-overlay">
+  <div class="spinner"></div>
+  <p class="loading-text">Analisando o alvo...</p>
+</div>
 
-
-
+<!-- Container principal -->
 <div class="main-container">
   <div class="search-container">
     <img src="logo teste.png" alt="Logo Apex" class="logo-apex" />
 
     <input
       type="url"
+      aria-label="URL para o scan"
       [(ngModel)]="url"
       placeholder="Inserir a URL aqui"
       required
@@ -18,6 +23,8 @@
     <button (click)="onSearch()" class="search-button">
       Iniciar busca <i class="bx bx-search"></i>
     </button>
+
+    <div *ngIf="errorMessage" class="resultado-titulo">{{ errorMessage }}</div>
   </div>
 </div>
 
@@ -27,7 +34,7 @@
   <pre class="resultado-pre">{{ resultado }}</pre>
 </div>
 
-<!-- Dashboard renderizado após busca -->
+<!-- Dashboard renderizado após a busca -->
 <div *ngIf="mostrarDashboard">
   <app-dashboard></app-dashboard>
 </div>

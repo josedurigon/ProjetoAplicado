@@ -1,31 +1,27 @@
-.main-container {
-    display: flex;
-    flex-direction: row;
-    height: 100vh;
-  }
+* {
+  font-family: 'Rajdhani', sans-serif;
+}
 
-  * {
-    font-family: 'Poppins', sans-serif;
-  }
-  
-  .main-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-  
-  .content-container {
-    display: flex;
-    flex: 1;
-  }
-  
-  app-vertical-menu {
-    width: 250px; /* ajuste conforme o tamanho do menu */
-    background-color: #f1f1f1; /* exemplo de cor */
-    min-height: calc(100vh - 60px); /* ajuste se o header tiver outra altura */
-  }
-  
-  router-outlet {
-    flex: 1;
-    padding: 20px;
-  }
+.main-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content-container {
+  display: flex;
+  flex: 1;
+}
+
+/* Remover a largura fixa do menu para preservar o hover */
+app-vertical-menu {
+  background-color: #440724;
+  min-height: calc(100vh - 60px); /* mantém altura */
+  display: block; /* garante que ocupe espaço */
+}
+
+/* Remove padding lateral do conteúdo */
+router-outlet {
+  flex: 1;
+  padding: 0;
+}
