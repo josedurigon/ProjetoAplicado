@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ExploitService } from '../../../../service/exploit.service';
 import { DashboardComponent } from '../dashboard/dashboard.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +19,7 @@ export class HomeComponentAuth {
   isLoading = false;
   errorMessage = '';
 
-  constructor(private exploitService: ExploitService) {}
+  constructor(private exploitService: ExploitService,   private router: Router ) {}
 
   onSearch() {
     this.isLoading = true;
@@ -32,6 +33,7 @@ export class HomeComponentAuth {
           this.isLoading = false;
           this.mostrarDashboard = true;
         }, 1000); // Delay suave para UX
+        this.router.navigate(['dashboard'])
       },
       error: (err) => {
         this.isLoading = false;
