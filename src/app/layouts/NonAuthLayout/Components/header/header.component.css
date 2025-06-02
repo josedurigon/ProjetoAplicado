@@ -1,7 +1,13 @@
+* {
+  font-family: 'Rajdhani', sans-serif;
+}
+
+
+
 .main-header {
   width: 85vw;
   height: 72px;
-  background-color: #38081f;
+  background-color: #200311;
   color: #fff;
   display: flex;
   align-items: center;
@@ -12,9 +18,8 @@
 
 
 .header-container {
-  width: 100vw;
-  /*max-width: 1280px; */
-  
+  width: 100%;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 0 2rem;
   display: flex;
@@ -24,13 +29,21 @@
 
 /* Logo */
 .logo img {
+  height: 150px;
+  width: auto;
+  max-width: 200px;
+  object-fit: contain;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
 }
 
 /* Navegação */
 .nav {
 
   display: flex;
-  margin-left: 99%;
   gap: 2rem;
 }
 
@@ -53,7 +66,7 @@
   left: 0;
   height: 2px;
   width: 100%;
-  background-color: #e01071;
+  background-color: #200311;
 }
 
 /* Responsivo */

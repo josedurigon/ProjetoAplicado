@@ -1,3 +1,7 @@
+* {
+  font-family: 'Rajdhani', sans-serif;
+}
+
 .main-container {
   display: flex;
   align-items: center;
@@ -139,7 +143,7 @@ body {
 }
 
 .search-button:active {
-  color: #000;
+  color: #ffffff;
   font-weight: bold;
 }
 
@@ -147,7 +151,7 @@ body {
 .resultado-container {
   margin: 40px auto 60px auto;
   padding: 24px;
-  background: rgba(32, 3, 17, 0.9);
+  background: rgba(255, 255, 255, 0.9);
   border: 1px solid #517911;
   border-radius: 16px;
   max-width: 90%;
@@ -168,7 +172,7 @@ body {
 }
 
 .resultado-pre {
-  color: #00ffcc;
+  color: #ffffff;
   font-family: 'Courier New', Courier, monospace;
   font-size: 0.95rem;
   white-space: pre-wrap;

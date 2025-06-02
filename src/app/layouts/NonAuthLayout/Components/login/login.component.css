@@ -1,3 +1,7 @@
+* {
+  font-family: 'Rajdhani', sans-serif;
+}
+
 .login-wrapper {
     display: flex;
     align-items: center;
@@ -110,15 +114,35 @@
   }
   
   .login-card button:active {
-    color: #000;
+    color: #ffffff;
     font-weight: bold;
   }
 
-  
-  .login-card button:disabled {
-    background: #200310b4;
-    cursor: not-allowed;
-  }
+.login-card button:disabled {
+  background: #e01071; /* mantém a cor base */
+  color: #fff;
+  opacity: 0.5; /* deixa tudo mais "embaçado" */
+  cursor: not-allowed;
+  filter: blur(1px); /* aplica o embaçado no texto */
+}
+
+.register-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #e01071;
+  font-weight: 500;
+  margin-top: 1rem;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.register-link:hover {
+  color: #ff4f9c;
+  text-decoration: underline;
+}
+
   
   @keyframes glowing {
     0% {background-position: 0 0;}
@@ -137,3 +161,6 @@
       transform: translate(-50%, -50%) rotate(360deg);
     }
   }
+
+
+
