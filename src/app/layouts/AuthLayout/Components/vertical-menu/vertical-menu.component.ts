@@ -14,7 +14,7 @@ export class VerticalMenuComponent {
 
   menuItems: { label: string, icon: string, route: string }[] = [
     { label: 'Dashboard', icon: 'pi pi-home', route: '/dashboard' },
-    
+
   ];
 
 
