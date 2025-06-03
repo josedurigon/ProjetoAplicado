@@ -5,13 +5,13 @@
 /* Menu Container */
 .menu-container {
   width: 70px;
-  height: 170vh;
+  height: 280vh;
   background-color: #440724;
   padding: 1rem 0.5rem;
   box-shadow: none !important;
   border-radius: 0 1rem 1rem 0;
   overflow: hidden;
-  transition: width 0.4s ease; 
+  transition: width 0.4s ease;
   position: relative;
 }
 
